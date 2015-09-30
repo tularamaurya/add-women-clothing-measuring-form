@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Estdevs_Clothing>
+      <version>0.1.0</version>
+    </Estdevs_Clothing>
+  </modules>
+  <global>
+    <helpers>
+      <clothing>
+        <class>Estdevs_Clothing_Helper</class>
+      </clothing>
+    </helpers>
+	<models>
+	  <clothing>
+		<class>Estdevs_Clothing_Model</class>
+		<resourceModel>clothing_mysql4</resourceModel>
+	  </clothing>
+	</models>
+    <events>
+	  <catalog_product_save_after> <!-- identifier of the event we want to catch -->
+        <observers>
+          <catalog_product_save_after_handler> <!-- identifier of the event handler -->
+            <type>singleton</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>clothing/observer</class> <!-- observers class alias -->
+            <method>addcustomoptions</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </catalog_product_save_after_handler>
+        </observers>
+      </catalog_product_save_after>
+    </events>
+  </global>
+</config> 
