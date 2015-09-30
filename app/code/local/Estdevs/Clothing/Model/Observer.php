@@ -9,7 +9,7 @@ class Estdevs_Clothing_Model_Observer
 		            if ($options) {
 		                foreach ($options as $option) {
 		                     
-		                    if ($option['title'] == 'Adult') {
+		                    if ($option['title'] == 'Do you want stitiching ?') {
 		                        //we've already added the option
 		                        return;
 		                    }
@@ -34,7 +34,7 @@ class Estdevs_Clothing_Model_Observer
 		                // die;
 		
 		                 $option = array(
-		                'title' => 'Clskjflskad',
+		                'title' => 'Do you want stitiching ?',
 		                'type' => 'drop_down', // could be drop_down ,checkbox , multiple
 		                'is_require' => 0,
 		                'sort_order' => 0,
