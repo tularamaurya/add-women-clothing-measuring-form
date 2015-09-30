@@ -6,3 +6,11 @@
 4. Now create new product and check the attibute "addcustomoption"</br>
 
 
+Custom Option</br>
+1. Do you want stitiching ?        type radio  button  required </br>
+Yes / NO</br>
+
+2. size selection      dropdown   (standard , customize)</br>
+3. size attibute
+4. cutome-size   type textarea (hidden)
+
