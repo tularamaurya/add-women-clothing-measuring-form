@@ -9,89 +9,55 @@ class Estdevs_Clothing_Model_Observer
 		            if ($options) {
 		                foreach ($options as $option) {
 		                     
-		                    if ($option['title'] == 'Adult' || $option['title'] == 'Child') {
+		                    if ($option['title'] == 'Adult') {
 		                        //we've already added the option
 		                        return;
 		                    }
 		                     
 		                }
 		            }
-		            $adult         = $product->getAdult(); /* this is my custom attribute to get value */
-		            $adultPrice    = $product->getAdultPrice();  /* this is my custom attribute to get value */
-		            $child         = $product->getChild();  /* this is my custom attribute to get value */
-		            $childPrice    = $product->getChildPrice();  /* this is my custom attribute to get value */
-		            $isRequired    = array(
-		                1,
-		                0
+		            // foreach ($optionsArray as $option) {
+		                 $optionvalue[0]['title']      = 'Yes';
+		                $optionvalue[0]['price']      = 0;
+		                $optionvalue[0]['price_type'] = 'fixed';
+		                $optionvalue[0]['sku']        = '';
+		                $optionvalue[0]['sort_order'] = 0;
+		
+		                     $optionvalue[1]['title']      = 'No';
+		                $optionvalue[1]['price']      = 0;
+		                $optionvalue[1]['price_type'] = 'fixed';
+		                $optionvalue[1]['sku']        = '';
+		                $optionvalue[1]['sort_order'] = 0;
+		                // echo "<pre>";
+		                // print_r($optionvalue);
+		
+		                // die;
+		
+		                 $option = array(
+		                'title' => 'Clskjflskad',
+		                'type' => 'drop_down', // could be drop_down ,checkbox , multiple
+		                'is_require' => 0,
+		                'sort_order' => 0,
+		                'values' => $optionvalue
 		            );
-		            $optionTitle   = array(
-		                'Adult',
-		                'Child'
-		            );
-		            $optionPrice   = array(
-		                $adultPrice,
-		                $childPrice
-		            );
-		            $adultchildFor = array(
-		                $adult,
-		                $child
-		            );
-		            $optionsArray  = $this->getOptions($optionTitle, 'drop_down', $adultchildFor, $optionPrice, $isRequired);
-		            try {
-		                $product->setCanSaveCustomOptions(true);
-		                foreach ($optionsArray as $option) {
-		                    $product->getOptionInstance()->addOption($option);
-		                }
-		                 
-		                $product->setHasOptions(true);
-		            }
-		            catch (Exception $e) {
-		                Mage::Log($e->getMessage());
-		            }
+		             try {
+			                $product->setCanSaveCustomOptions(true);
+			               
+			                    $product->getOptionInstance()->addOption($option);
+			               // }
+			                 
+			                $product->setHasOptions(true);
+			            }
+			            catch (Exception $e) {
+			                Mage::Log($e->getMessage());
+			            }
+					            
+		            
+		            
+		            
+		            
+		           
 			}
-			 protected function getOptions($title = '', $type = '', $adultchildFor, $optionPrice, $isRequired)
-    {
-         
-        if (is_array($title)) {
-            $j = 0;
-            foreach ($title as $ttl) {
-                $option[$j]               = array();
-                $optionvalue              = array();
-                $option[$j]['title']      = $ttl;
-                $option[$j]['type']       = $type;
-                $option[$j]['is_require'] = $isRequired[$j];
-                $option[$j]['sort_order'] = $j;
-                for ($i = 1; $i <= $adultchildFor[$j]; $i++) {
-                    $optionvalue[$i]['title']      = $i;
-                    $optionvalue[$i]['price']      = $i * $optionPrice[$j];
-                    $optionvalue[$i]['price_type'] = 'fixed';
-                    $optionvalue[$i]['sku']        = '';
-                    $optionvalue[$i]['sort_order'] = $i;
-                     
-                }
-                $option[$j]['values'] = $optionvalue;
-                $j++;
-            }
-        } else {
-            $optionvalue = array();
-            for ($i = 1; $i <= $for; $i++) {
-                $optionvalue[$i]['title']      = $i;
-                $optionvalue[$i]['price']      = $i * $price;
-                $optionvalue[$i]['price_type'] = 'fixed';
-                $optionvalue[$i]['sku']        = '';
-                $optionvalue[$i]['sort_order'] = $i;
-            }
-            $option = array(
-                'title' => (string) $title,
-                'type' => $type, // could be drop_down ,checkbox , multiple
-                'is_require' => $isrequired,
-                'sort_order' => 0,
-                'values' => $optionvalue
-            );
-             
-             
-        }
-        return $option;
-    }
+		
 		
 }
