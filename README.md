@@ -4,6 +4,13 @@
 2. Download the plugin</br>
 3. Extract the plugin and place the files in respective folders</br>
 4. Now create new product and check the attibute "addcustomoption"</br>
+5. 
+$installer = $this;
+$installer->startSetup();
+$installer->run("
+    ALTER TABLE `catalog_product_option` ADD
+    `custom_css` text");
+$installer->endSetup();
 
 
 Custom Option</br>
