@@ -5,6 +5,15 @@
       <version>0.1.0</version>
     </Estdevs_Clothing>
   </modules>
+   <frontend>
+     <layout>
+       <updates>
+         <session>
+          <file>clothing.xml</file>
+         </session>
+       </updates>
+     </layout>
+   </frontend>
   <global>
     <helpers>
       <clothing>
@@ -18,16 +27,16 @@
 	  </clothing>
 	</models>
     <events>
-	  <catalog_product_save_after> <!-- identifier of the event we want to catch -->
+	  <catalog_product_save_before> <!-- identifier of the event we want to catch -->
         <observers>
-          <catalog_product_save_after_handler> <!-- identifier of the event handler -->
+          <catalog_product_save_before_handler> <!-- identifier of the event handler -->
             <type>singleton</type> <!-- class method call type; valid are model, object and singleton -->
             <class>clothing/observer</class> <!-- observers class alias -->
             <method>addcustomoptions</method>  <!-- observer's method to be called -->
             <args></args> <!-- additional arguments passed to observer -->
-          </catalog_product_save_after_handler>
+          </catalog_product_save_before_handler>
         </observers>
-      </catalog_product_save_after>
+      </catalog_product_save_before>
     </events>
   </global>
 </config> 
